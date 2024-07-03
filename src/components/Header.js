@@ -14,6 +14,7 @@ function Header({ about, contact,skill,home }) {
 
   const scrollToRef = (ref) => {
     const topOffset = ref.current.offsetTop - headerHeight;
+    console.log(ref)
     window.scrollTo({
       top: topOffset,
       behavior: "instant",
