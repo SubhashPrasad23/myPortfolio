@@ -1,8 +1,7 @@
 import React from "react";
 import myPic from "../assets/mypic.jpg";
 import { Cursor, useTypewriter } from "react-simple-typewriter";
-import cv from "../assets/subhashcv.pdf";
-// import main from "../assets/main.jpg";
+import cv from "../assets/subhash_resume.pdf";
 import { motion } from "framer-motion";
 
 const Hero = React.forwardRef((props, home) => {
@@ -14,9 +13,7 @@ const Hero = React.forwardRef((props, home) => {
 
   return (
     <motion.div
-      // initial={{ opacity: 0, y: 100 }}
-      // whileInView={{ opacity: 1, y: 0 }}
-      // transition={{ delay: 1, duration: 1, ease: "easeInOut" }}
+ 
       className="flex justify-center items-center h-[calc(100vh-4rem)]  mt-20 overflow-hidden  " ref={home}
     >
       <div className="overflow-auto text-white  w-4/5    lg:flex lg:flex-row items-center justify-center  gap-5 space-y-6 ">
@@ -30,12 +27,7 @@ const Hero = React.forwardRef((props, home) => {
           <h4 className="lg:text-5xl text-4xl font-extrabold text-emerald-600">
             {text} <Cursor />
           </h4>
-          {/* <p className="text-xl pt-6 ">
-            Hello! I'm Subhash, a passionate software developer with a knack for
-            creating dynamic and responsive web applications. With a strong
-            foundation in front-end technologies. I enjoy transforming ideas
-            into real-world applications.
-          </p> */}
+       
           <div className="space-x-3 pt-6">
             <button className="relative overflow-hidden px-5 py-2 rounded-lg  bg-emerald-600 shadow-2xl transition-all before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-emerald-400 before:rounded-lg before:transition-all before:duration-500 hover:text-white hover:shadow-green-400 hover:before:left-0 hover:before:w-full">
               <span className="relative text-white font-semibold">

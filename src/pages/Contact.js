@@ -3,16 +3,14 @@ import contact from "../assets/contact.png";
 import { motion } from "framer-motion";
 
 const Contact = React.forwardRef((props, contactRef) => {
-  // console.log(contactRef);
-  const [ user, setUser] = useState({
+  const [user, setUser] = useState({
     fullName: "",
     email: "",
     message: "",
   });
-  // console.log(user);
+
   const inputHandler = (e) => {
     const { name, value } = e.target;
-    // console.log(e.target.name);
     setUser((prev) => ({ ...prev, [name]: value }));
   };
 
@@ -22,7 +20,6 @@ const Contact = React.forwardRef((props, contactRef) => {
     if (!user.fullName || !user.email || !user.message) {
       alert("All fields are required.");
     } else {
-      // Handle form submission logic here
       fetch("https://formspree.io/f/mnqeelqz", {
         method: "POST",
         headers: {
@@ -55,7 +52,7 @@ const Contact = React.forwardRef((props, contactRef) => {
       ref={contactRef}
     >
       <div className="w-4/5 text-white space-y-6">
-        <h3 className="text-3xl  text-center font-semibold tracking-widest  text-shadow-custom-white">
+        <h3 className="text-3xl text-center font-semibold tracking-widest text-shadow-custom-white">
           <span className="text-emerald-400">CONTACT</span> ME
         </h3>
         <div className="w-full flex lg:flex-row flex-col gap-6">
@@ -67,84 +64,79 @@ const Contact = React.forwardRef((props, contactRef) => {
           >
             <img src={contact} alt="" className="w-full h-full" />
           </motion.div>
-          <div className="lg:w-3/5 w-full  ">
+          <motion.div
+            className="lg:w-3/5 w-full"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+          >
             <div className="w-full text-black">
-              <form
-                // action="https://formspree.io/f/mnqeelqz"
-                // method="POST"
-                className="space-y-5 flex flex-col "
-                onSubmit={formHandler}
-              >
+              <form className="space-y-5 flex flex-col" onSubmit={formHandler}>
+                {/* Wrapper motion div for all form fields and submit button */}
                 <motion.div
                   initial={{ opacity: 0, y: -100 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5, duration: 0.5, ease: "easeInOut" }}
-                  className="w-full space-y-1"
+                  className="w-full space-y-5"
                 >
-                  <label htmlFor="fullName" className="text-white bg-black">
-                    Full Name
-                  </label>
-                  <input
-                    type="text"
-                    id="fullName"
-                    placeholder="Enter your name"
-                    className="w-full px-2 py-2 rounded-md"
-                    value={user.fullName}
-                    name="fullName"
-                    onChange={inputHandler}
-                  />
-                </motion.div>
+                  {/* Full Name Field */}
+                  <div className="w-full space-y-1">
+                    <label htmlFor="fullName" className="text-white bg-black">
+                      Full Name
+                    </label>
+                    <input
+                      type="text"
+                      id="fullName"
+                      placeholder="Enter your name"
+                      className="w-full px-2 py-2 rounded-md outline-none border border-white focus:ring-2  focus:border-emerald-400 focus:ring-emerald-400"
+                      value={user.fullName}
+                      name="fullName"
+                      onChange={inputHandler}
+                    />
+                  </div>
 
-                <motion.div
-                  initial={{ opacity: 0, y: -100 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 1, duration: 0.5, ease: "easeInOut" }}
-                  className="w-full space-y-1"
-                >
-                  <label htmlFor="email" className="text-white">
-                    Email
-                  </label>
-                  <input
-                    type="text"
-                    id="email"
-                    placeholder="Enter your email"
-                    className="w-full px-2 py-2 rounded-md"
-                    value={user.email}
-                    name="email"
-                    onChange={inputHandler}
-                  />
-                </motion.div>
+                  {/* Email Field */}
+                  <div className="w-full space-y-1">
+                    <label htmlFor="email" className="text-white">
+                      Email
+                    </label>
+                    <input
+                      type="text"
+                      id="email"
+                      placeholder="Enter your email"
+                      className="w-full px-2 py-2 rounded-md  outline-none border border-white focus:ring-2  focus:border-emerald-400 focus:ring-emerald-400"
+                      value={user.email}
+                      name="email"
+                      onChange={inputHandler}
+                    />
+                  </div>
 
-                <motion.div
-                  initial={{ opacity: 0, y: -100 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 1.5, duration: 0.5, ease: "easeInOut" }}
-                  className="w-full space-y-1"
-                >
-                  <label htmlFor="message" className="text-white">
-                    Your message
-                  </label>
-                  <textarea
-                    className="w-full px-2 py-3 rounded-lg resize-none"
-                    rows="6"
-                    value={user.message}
-                    name="message"
-                    onChange={inputHandler}
-                  ></textarea>
-                </motion.div>
+                  {/* Message Field */}
+                  <div className="w-full space-y-1">
+                    <label htmlFor="message" className="text-white">
+                      Your message
+                    </label>
+                    <textarea
+                      className="w-full px-2 py-3 rounded-lg resize-none outline-none border border-white focus:ring-2  focus:border-emerald-400 focus:ring-emerald-400"
+                      rows="6"
+                      value={user.message}
+                      name="message"
+                      onChange={inputHandler}
+                    ></textarea>
+                  </div>
 
-                <motion.button
-                  initial={{ opacity: 0, y: -20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 2, duration: 0.1, ease: "easeInOut" }}
-                  type="submit"
-                  className="bg-emerald-400 w-28 text-white px-6 py-1.5 mt-7 rounded-md font-semibold tracking-wider hover:scale-110 duration-300"
-                >
-                  SUBMIT
-                </motion.button>
+                  {/* Submit Button */}
+                  <button
+                    type="submit"
+                    className="bg-emerald-400 w-28 text-white px-6 py-1.5 mt-7 rounded-md font-semibold tracking-wider hover:scale-110 duration-300"
+                 
+                  >
+                    SUBMIT
+                  </button>
+                </motion.div>
               </form>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>
