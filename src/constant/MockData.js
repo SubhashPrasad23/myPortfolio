@@ -51,4 +51,14 @@ export const projectList = [
     demo: "#",
     tech: ["ReactJS", "Tailwind CSS", "local storage", "firebase"],
   },
+  ,
+  {
+    name: "HealthBell -medicine reminder",
+    img: "",
+    description:
+      "HealthBell allows users to add various medications and their details, with options to delete entries. Users also receive web push notifications to alert them when it's time to take their medicine.",
+    github: "#",
+    demo: "#",
+    tech: ["ReactJS", "Tailwind CSS", "local storage", "firebase"],
+  }
 ];

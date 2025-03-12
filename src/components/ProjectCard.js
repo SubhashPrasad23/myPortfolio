@@ -12,9 +12,7 @@ const ProjectCard = ({ data }) => {
             {data.description}
           </p>
           <div className="py-1">
-            <h6 className="text-red-600 text-lg font-semibold tracking-wider">
-              Tech Stack
-            </h6>
+           
             <span>{data?.tech?.join(", ")}</span>
           </div>
         </div>
